@@ -6,21 +6,52 @@ import * as vscode from 'vscode';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "vscode-tab-menu-extras" is now active in the web extension host!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscode-tab-menu-extras.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.listCommands', async () => {
+        const allCommands = await vscode.commands.getCommands();
+		allCommands.forEach( command => {
+			console.log(command);
+		});
+	}));
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Tab Menu Extras in a web extension host!');
-	});
+	// Make sure we invoke this on the editor whose tab we clicked on, regardless of
+	// whether it is the active editor
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.save', async (uri: vscode.Uri) => {
+        const document = await vscode.workspace.openTextDocument(uri);
+        const editor = await vscode.window.showTextDocument(document);
+		if (editor && document.isDirty) {
+		  vscode.commands.executeCommand('workbench.action.files.save');
+		}
+	}));
 
-	context.subscriptions.push(disposable);
+	// Make sure we invoke this on the editor whose tab we clicked on, regardless of
+	// whether it is the active editor
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.saveAs', async (uri: vscode.Uri) => {
+        const document = await vscode.workspace.openTextDocument(uri);
+        const editor = await vscode.window.showTextDocument(document);
+		if (editor && document.isDirty) {
+			vscode.commands.executeCommand('workbench.action.files.saveAs');
+		}
+	}));
+
+	// We can invoke this on any active editor
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.saveAll', async (uri: vscode.Uri) => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+		  vscode.commands.executeCommand('workbench.action.files.saveAll');
+		}
+	}));
+
+	// Make sure we invoke this on the editor whose tab we clicked on, regardless of
+	// whether it is the active editor
+	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.revertFile', async (uri: vscode.Uri) => {
+        const document = await vscode.workspace.openTextDocument(uri);
+        const editor = await vscode.window.showTextDocument(document);
+		if (editor && document.isDirty) {
+		  vscode.commands.executeCommand('workbench.action.files.revert');
+		}
+	}));
 }
 
 // This method is called when your extension is deactivated

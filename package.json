@@ -14,10 +14,60 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-tab-menu-extras.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-tab-menu-extras.listCommands",
+        "title": "List Commands"
+      },
+      {
+        "command": "vscode-tab-menu-extras.revertFile",
+        "title": "Revert File"
+      },
+      {
+        "command": "vscode-tab-menu-extras.saveAll",
+        "title": "Save All"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title/context": [
+        {
+          "command": "vscode-tab-menu-extras.save",
+          "group": "2_Workspace",
+          "when": "editorIsOpen"
+        },
+        {
+          "command": "vscode-tab-menu-extras.saveAs",
+          "group": "2_Workspace",
+          "when": "editorIsOpen"
+        },
+        {
+          "command": "vscode-tab-menu-extras.saveAll",
+          "group": "2_Workspace",
+          "when": "editorIsOpen"
+        },
+        {
+          "command": "vscode-tab-menu-extras.revertFile",
+          "group": "2_Workspace",
+          "when": "editorIsOpen"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "vscode-tab-menu-extras.save",
+          "when": "never"
+        },
+        {
+          "command": "vscode-tab-menu-extras.saveAs",
+          "when": "never"
+        },
+        {
+          "command": "vscode-tab-menu-extras.saveAll",
+          "when": "never"
+        },
+        {
+          "command": "vscode-tab-menu-extras.revertFile",
+          "when": "never"
+        }
+      ]
+    }
   },
   "scripts": {
     "test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/extensionTests.js",
