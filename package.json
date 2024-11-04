@@ -2,7 +2,7 @@
   "name": "vscode-tab-menu-extras",
   "displayName": "Tab Menu Extras",
   "description": "Adds useful items to the righ-click menu of editors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "tab",
     "menu",
@@ -46,7 +46,7 @@
       },
       {
         "command": "vscode-tab-menu-extras.saveAs",
-        "title": "Save As"
+        "title": "Save As..."
       },
       {
         "command": "vscode-tab-menu-extras.saveAll",
@@ -86,22 +86,22 @@
       "editor/title/context": [
         {
           "command": "vscode-tab-menu-extras.save",
-          "group": "2_Workspace",
+          "group": "2_Workspace@10",
           "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSave"
         },
         {
           "command": "vscode-tab-menu-extras.saveAs",
-          "group": "2_Workspace",
+          "group": "2_Workspace@11",
           "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSaveAs"
         },
         {
           "command": "vscode-tab-menu-extras.saveAll",
-          "group": "2_Workspace",
+          "group": "2_Workspace@12",
           "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSaveAll"
         },
         {
           "command": "vscode-tab-menu-extras.revertFile",
-          "group": "2_Workspace",
+          "group": "2_Workspace@13",
           "when": "editorIsOpen && config.vscode-tab-menu-extras.enableRevertFile"
         }
       ],

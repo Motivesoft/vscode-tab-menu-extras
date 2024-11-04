@@ -31,6 +31,10 @@ None reported
 
 ## Release Notes
 
+### 1.0.1
+
+- Force order of menu items
+
 ### 1.0.0
 
 - Initial release
