@@ -2,7 +2,29 @@
   "name": "vscode-tab-menu-extras",
   "displayName": "Tab Menu Extras",
   "description": "Adds useful items to the righ-click menu of editors",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "keywords": [
+    "tab",
+    "menu",
+    "context",
+    "save", 
+    "revert"
+  ],
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "publisher": "Motivesoft",
+  "author": {
+    "name": "ianabrown",
+    "url": "https://github.com/ianabrown"
+  },
+  "homepage": "https://github.com/Motivesoft/vscode-tab-menu-extras/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Motivesoft/vscode-tab-menu-extras.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Motivesoft/vscode-tab-menu-extras/issues"
+  },
   "engines": {
     "vscode": "^1.95.0"
   },
