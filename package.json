@@ -10,6 +10,7 @@
     "Other"
   ],
   "activationEvents": [],
+  "main": "./dist/web/extension.js",
   "browser": "./dist/web/extension.js",
   "contributes": {
     "commands": [
@@ -18,38 +19,75 @@
         "title": "List Commands"
       },
       {
-        "command": "vscode-tab-menu-extras.revertFile",
-        "title": "Revert File"
+        "command": "vscode-tab-menu-extras.save",
+        "title": "Save"
+      },
+      {
+        "command": "vscode-tab-menu-extras.saveAs",
+        "title": "Save As"
       },
       {
         "command": "vscode-tab-menu-extras.saveAll",
         "title": "Save All"
+      },
+      {
+        "command": "vscode-tab-menu-extras.revertFile",
+        "title": "Revert File"
       }
     ],
+    "configuration": {
+      "title": "Tab Menu Extras",
+      "properties": {
+        "vscode-tab-menu-extras.enableSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add 'Save' to the editor tab context menu"
+        },
+        "vscode-tab-menu-extras.enableSaveAs": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add 'Save As' to the editor tab context menu"
+        },
+        "vscode-tab-menu-extras.enableSaveAll": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add 'Save All' to the editor tab context menu"
+        },
+        "vscode-tab-menu-extras.enableRevertFile": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add 'Revert File' to the editor tab context menu"
+        }
+      }
+    },
     "menus": {
       "editor/title/context": [
         {
           "command": "vscode-tab-menu-extras.save",
           "group": "2_Workspace",
-          "when": "editorIsOpen"
+          "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSave"
         },
         {
           "command": "vscode-tab-menu-extras.saveAs",
           "group": "2_Workspace",
-          "when": "editorIsOpen"
+          "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSaveAs"
         },
         {
           "command": "vscode-tab-menu-extras.saveAll",
           "group": "2_Workspace",
-          "when": "editorIsOpen"
+          "when": "editorIsOpen && config.vscode-tab-menu-extras.enableSaveAll"
         },
         {
           "command": "vscode-tab-menu-extras.revertFile",
           "group": "2_Workspace",
-          "when": "editorIsOpen"
+          "when": "editorIsOpen && config.vscode-tab-menu-extras.enableRevertFile"
         }
       ],
       "commandPalette": [
+        {
+          "command": "vscode-tab-menu-extras.listCommands",
+          "when": "never"
+        },
         {
           "command": "vscode-tab-menu-extras.save",
           "when": "never"

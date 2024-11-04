@@ -6,8 +6,10 @@ import * as vscode from 'vscode';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "vscode-tab-menu-extras" is now active in the web extension host!');
+	console.log('Extension "vscode-tab-menu-extras" is now active');
 
+	// This can be effectively enabled/disabled through a clause in package.json about whether it is visible in the command palette
+	// It is left here for potential future work 
 	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.listCommands', async () => {
         const allCommands = await vscode.commands.getCommands();
 		allCommands.forEach( command => {
