@@ -21,9 +21,13 @@ export function activate(context: vscode.ExtensionContext) {
 	// whether it is the active editor
 	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.save', async (uri: vscode.Uri) => {
         const document = await vscode.workspace.openTextDocument(uri);
-        const editor = await vscode.window.showTextDocument(document);
-		if (editor && document.isDirty) {
-		  vscode.commands.executeCommand('workbench.action.files.save');
+		const editor = await vscode.window.showTextDocument(document);
+		if( document.isUntitled ) {
+			vscode.commands.executeCommand('workbench.action.files.saveAs');
+		} else {
+			if (editor && document.isDirty) {
+			  vscode.commands.executeCommand('workbench.action.files.save');
+			}
 		}
 	}));
 
@@ -32,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.saveAs', async (uri: vscode.Uri) => {
         const document = await vscode.workspace.openTextDocument(uri);
         const editor = await vscode.window.showTextDocument(document);
-		if (editor && document.isDirty) {
+		if (editor && (document.isDirty || document.isUntitled)) {
 			vscode.commands.executeCommand('workbench.action.files.saveAs');
 		}
 	}));
