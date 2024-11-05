@@ -31,6 +31,11 @@ None reported
 
 ## Release Notes
 
+### 1.0.2
+
+- Deal with untitled files
+- Works in Code for the desktop or for the web
+
 ### 1.0.1
 
 - Force order of menu items
