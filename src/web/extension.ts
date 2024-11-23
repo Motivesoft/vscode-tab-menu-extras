@@ -11,9 +11,24 @@ export function activate(context: vscode.ExtensionContext) {
 	// This can be effectively enabled/disabled through a clause in package.json about whether it is visible in the command palette
 	// It is left here for potential future work 
 	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.listCommands', async () => {
-        const allCommands = await vscode.commands.getCommands();
-		allCommands.forEach( command => {
-			console.log(command);
+		const editor = vscode.window.activeTextEditor;
+		if (!editor) {
+		  return; // No open text editor
+		}
+		
+		// Get all of the non-internal commands
+		const allCommands = await vscode.commands.getCommands(true);
+
+		// Sort and assemble the list
+		var commands: string;
+		allCommands.sort().forEach( command => {
+			commands += `${command}\n`;
+		});
+
+		// Paste it into the current document
+		const position = editor.selection.active;
+		editor.edit(editBuilder => {
+			editBuilder.insert(position, commands);
 		});
 	}));
 
