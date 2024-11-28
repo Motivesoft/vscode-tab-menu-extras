@@ -13,7 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('vscode-tab-menu-extras.listCommands', async () => {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) {
-		  return; // No open text editor
+			vscode.window.showErrorMessage("List Commands requires an open and active text editor window");
+		  	return; // No open text editor
 		}
 		
 		// Get all of the non-internal commands
