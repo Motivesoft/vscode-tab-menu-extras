@@ -6,6 +6,7 @@
 		{
 			"label": "watch-web",
 			"dependsOn": [
+				"compile",
 				"npm: watch-web:tsc",
 				"npm: watch-web:esbuild"
 			],
