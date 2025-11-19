@@ -2,7 +2,7 @@
   "name": "vscode-tab-menu-extras",
   "displayName": "Tab Menu Extras",
   "description": "Adds useful items to the righ-click menu of editors",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "tab",
     "menu",
