@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.3]
+
+- Update dependencies
+
 ## [1.0.2]
 
 - Deal with untitled files
@@ -13,6 +17,7 @@
 
 - Initial release
 
+[1.0.3]: https://github.com/Motivesoft/vscode-tab-menu-extras/releases/tag/v1.0.3
 [1.0.2]: https://github.com/Motivesoft/vscode-tab-menu-extras/releases/tag/v1.0.2
 [1.0.1]: https://github.com/Motivesoft/vscode-tab-menu-extras/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Motivesoft/vscode-tab-menu-extras/releases/tag/v1.0.0
